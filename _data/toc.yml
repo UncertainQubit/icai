@@ -22,13 +22,15 @@
 # See the links below for an example.
 
 # Top-level page
-- title: Home
-  url: /intro
-  not_numbered: true
 
+
+#- title: Home
+ # url: /intro
+#  not_numbered: true
+  
 # External link
 - title: GitHub repository
-  url: https://github.com/jupyter/jupyter-book
+  url: https://github.com/UncertainQubit/icai
   external: true
   not_numbered: true
 
@@ -40,20 +42,20 @@
 - divider: true
 
 # Add a header and sample content section
-- header: Demo textbook
+- header: Internal Use Only - Draft 1
 
 # A chapter w/ a collection of sections beneath it
-- title: Features and customization
-  url: /features/features
-  not_numbered: true
-  expand_sections: true
-  sections:
-  - title: Markdown files
-    url: /features/markdown
-    not_numbered: true
-  - title: Jupyter notebooks
-    url: /features/notebooks
-    not_numbered: true
+#- title: Features and customization
+ # url: /features/features
+  #not_numbered: true
+  #expand_sections: true
+  #sections:
+  #- title: Markdown files
+   # url: /features/markdown
+    #not_numbered: true
+  #- title: Jupyter notebooks
+   # url: /features/notebooks
+    #not_numbered: true
     
 - title: Lessons
   url: /lessons/therightfit
