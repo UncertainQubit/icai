@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: model data just set tree very models function step maxleafnodes using fit overfitting where training perfectly being accuracy validation because underfitting missing trends used not below decision stuff getmae values value accurate size even youve right matches almost created looks near rate however does poorly new fitted trained opposite built accuracies high similar crucial categories define seen specific comparisons neither desirable greatly reduces either larger initial creation eliminates usefulness inaccurate predictions processing broader understanding patterns raw githubusercontent com uncertainqubit firstrepo master rywqsr png code hidden basically provides hyperparameter analysis trees explanation identify want intro send me tomorrow try github needs
+search: model data overfitting training function tree validation very set models different values step maxleafnodes using fit where perfectly being created accuracy however poorly new because trained underfitting missing trends seen used not below performs extremely great testing large dataset getmae value accurate size even youve right matches almost looks near rate does fitted opposite built accuracies high similar crucial categories define just specific comparisons neither desirable greatly reduces either larger initial creation eliminates usefulness inaccurate predictions processing broader understanding patterns raw githubusercontent com uncertainqubit firstrepo master rywqsr png example test purely well close estimates actual housing costs tested separate extremel
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -36,7 +36,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The code below will be hidden but is basically provides a way to do hyperparameter analysis with decision trees. I can write the explanation as a way to identify over/underfitting if you want to do an intro? You can just write it and send it to me. Tomorrow I can try and set you up with all the github stuff that needs to be done on the back-end. And just ignore demo stuff. Thanks so much!</p>
+<p>An example of overfitting can be seen in the model below. When you test the model purely on the data it was trained with it performs extremely well (extremely close estimates to actual housing costs). However, when tested on separate validation data the model has an extremel</p>
 
 </div>
 </div>
@@ -71,14 +71,19 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">train_X</span><span class="p">,</span> <span class="n">val_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">val_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Specify Model</span>
-<span class="n">iowa_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">iowa_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">)</span>
 <span class="c1"># Fit Model</span>
 <span class="n">iowa_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+
+<span class="c1"># Make training predictions and calculate mean absolute error</span>
+<span class="n">train_predictions</span> <span class="o">=</span> <span class="n">iowa_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_X</span><span class="p">)</span>
+<span class="n">train_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">train_predictions</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training MAE: $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_mae</span><span class="p">))</span>
 
 <span class="c1"># Make validation predictions and calculate mean absolute error</span>
 <span class="n">val_predictions</span> <span class="o">=</span> <span class="n">iowa_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">val_X</span><span class="p">)</span>
 <span class="n">val_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">val_predictions</span><span class="p">,</span> <span class="n">val_y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation MAE: </span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val_mae</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation MAE: $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val_mae</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -92,7 +97,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Validation MAE: 29,653
+<pre>Training MAE: $62
+Validation MAE: $29,298
 </pre>
 </div>
 </div>
@@ -107,7 +113,18 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Exercises">Exercises<a class="anchor-link" href="#Exercises"> </a></h1><p>You could write the function <code>get_mae</code> yourself. For now, we'll supply it. This is the same function you read about in the previous lesson. Just run the cell below.</p>
+<p>One way to identify overfitting/underfitting is if your model performs great with training data but poorly with new testing data which is why it is important to have both a large training dataset and a large testing dataset. One of the primary ways ML engineers work to address this problem is through something called hyperparameter analysis. Essential this means trying a bunch of different values for various parameters within a function (such as the number of end nodes).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Exercise">Exercise<a class="anchor-link" href="#Exercise"> </a></h1><p>We have created the function <code>get_mae</code> for you which will generate the MAE for different versions of our model. Code for this function can be viewed in the cell below.</p>
 
 </div>
 </div>
@@ -175,25 +192,25 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>100
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
 <div class="output_subarea output_text output_error">
 <pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-8-66776fb232c1&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-<span class="ansi-green-fg">     12</span> get_ipython<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>run_line_magic<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;matplotlib&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;inline&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     13</span> <span class="ansi-green-intense-fg ansi-bold">import</span> seaborn <span class="ansi-green-intense-fg ansi-bold">as</span> sns
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 14</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>sns<span class="ansi-yellow-intense-fg ansi-bold">.</span>scatterplot<span class="ansi-yellow-intense-fg ansi-bold">(</span>x<span class="ansi-yellow-intense-fg ansi-bold">=</span>candidate_max_leaf_nodes<span class="ansi-yellow-intense-fg ansi-bold">,</span> y<span class="ansi-yellow-intense-fg ansi-bold">=</span>scores<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-6-36ea35ccb72c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-red-fg"># Write loop to find the ideal tree size from candidate_max_leaf_nodes</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> _
+<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span>scores <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">{</span>leaf_size<span class="ansi-blue-fg">:</span> get_mae<span class="ansi-blue-fg">(</span>leaf_size<span class="ansi-blue-fg">,</span> train_X<span class="ansi-blue-fg">,</span> val_X<span class="ansi-blue-fg">,</span> train_y<span class="ansi-blue-fg">,</span> val_y<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> leaf_size <span class="ansi-green-fg">in</span> candidate_max_leaf_nodes<span class="ansi-blue-fg">}</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> best_tree_size <span class="ansi-blue-fg">=</span> min<span class="ansi-blue-fg">(</span>scores<span class="ansi-blue-fg">,</span> key<span class="ansi-blue-fg">=</span>scores<span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> print<span class="ansi-blue-fg">(</span>best_tree_size<span class="ansi-blue-fg">)</span>
 
-<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>: module &#39;seaborn&#39; has no attribute &#39;scatterplot&#39;</pre>
+<span class="ansi-green-fg">&lt;ipython-input-6-36ea35ccb72c&gt;</span> in <span class="ansi-cyan-fg">&lt;dictcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-red-fg"># Write loop to find the ideal tree size from candidate_max_leaf_nodes</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> _
+<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span>scores <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">{</span>leaf_size<span class="ansi-blue-fg">:</span> get_mae<span class="ansi-blue-fg">(</span>leaf_size<span class="ansi-blue-fg">,</span> train_X<span class="ansi-blue-fg">,</span> val_X<span class="ansi-blue-fg">,</span> train_y<span class="ansi-blue-fg">,</span> val_y<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> leaf_size <span class="ansi-green-fg">in</span> candidate_max_leaf_nodes<span class="ansi-blue-fg">}</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span> best_tree_size <span class="ansi-blue-fg">=</span> min<span class="ansi-blue-fg">(</span>scores<span class="ansi-blue-fg">,</span> key<span class="ansi-blue-fg">=</span>scores<span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span> print<span class="ansi-blue-fg">(</span>best_tree_size<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;get_mae&#39; is not defined</pre>
 </div>
 </div>
 </div>
@@ -261,8 +278,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You've tuned this model and improved your results. But we are still using Decision Tree models, which are not very sophisticated by modern machine learning standards. In the next step you will learn to use Random Forests to improve your models even more.</p>
-<h1 id="Great-Job!">Great Job!<a class="anchor-link" href="#Great-Job!"> </a></h1><hr>
-
+<h1 id="Great-Job!">Great Job!<a class="anchor-link" href="#Great-Job!"> </a></h1>
 </div>
 </div>
 </div>
