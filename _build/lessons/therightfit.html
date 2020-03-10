@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: model data overfitting training function tree validation very set models different values step maxleafnodes using fit where perfectly being created accuracy however poorly new because trained underfitting missing trends seen used not below performs extremely great testing large dataset getmae value accurate size even youve right matches almost looks near rate does fitted opposite built accuracies high similar crucial categories define just specific comparisons neither desirable greatly reduces either larger initial creation eliminates usefulness inaccurate predictions processing broader understanding patterns raw githubusercontent com uncertainqubit firstrepo master rywqsr png example test purely well close estimates actual housing costs tested separate extremel
+search: model data overfitting training function tree validation underfitting very set models below extremely large different values step maxleafnodes using fit where perfectly being created accuracy however poorly new because trained missing trends seen used not performs ways identify great testing dataset getmae value accurate size even youve right matches almost looks near rate does fitted opposite built accuracies high similar crucial categories define just specific comparisons neither desirable greatly reduces either larger initial creation eliminates usefulness inaccurate predictions processing broader understanding patterns raw githubusercontent com uncertainqubit firstrepo master rywqsr png example test purely well close estimates actual housing costs tested
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -36,7 +36,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>An example of overfitting can be seen in the model below. When you test the model purely on the data it was trained with it performs extremely well (extremely close estimates to actual housing costs). However, when tested on separate validation data the model has an extremel</p>
+<p>An example of overfitting can be seen in the model below. When you test the model purely on the data it was trained with it performs extremely well (extremely close estimates to actual housing costs). However, when tested on separate validation data the model has an extremely large margin of error. Below we will explore ways to help identify and correct overfitting and underfitting in your model.</p>
 
 </div>
 </div>
@@ -78,12 +78,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="c1"># Make training predictions and calculate mean absolute error</span>
 <span class="n">train_predictions</span> <span class="o">=</span> <span class="n">iowa_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_X</span><span class="p">)</span>
 <span class="n">train_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">train_predictions</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training MAE: $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_mae</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_mae</span><span class="p">))</span>
 
-<span class="c1"># Make validation predictions and calculate mean absolute error</span>
+<span class="c1"># Make validation predipoctions and calculate mean absolute error</span>
 <span class="n">val_predictions</span> <span class="o">=</span> <span class="n">iowa_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">val_X</span><span class="p">)</span>
 <span class="n">val_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">val_predictions</span><span class="p">,</span> <span class="n">val_y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation MAE: $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val_mae</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val_mae</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -97,8 +97,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training MAE: $62
-Validation MAE: $29,298
+<pre>Training Mean Average Error (MAE): $62
+Validation Mean Average Error (MAE): $29,049
 </pre>
 </div>
 </div>
