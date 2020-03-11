@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: model data overfitting training below tree validation underfitting very set models extremely large different values function step maxleafnodes using fit where perfectly being created accuracy however poorly new because trained missing trends seen used either not performs ways identify hyperparameter analysis great testing dataset automated process getmae value accurate size even youve right matches almost looks near rate does fitted opposite built accuracies high similar crucial categories define just specific comparisons neither desirable greatly reduces larger initial creation eliminates usefulness inaccurate predictions processing broader understanding patterns raw githubusercontent com uncertainqubit firstrepo master rywqsr png example test purely well close estimates
+search: model data overfitting underfitting values training accuracy below large tree validation because set extremely error identify hyperparameter analysis testing different using mae our size fit where almost perfectly being created however poorly new trained very missing trends seen just used either performs margin ways great dataset ml engineers trying automated process function step loop parameter allows actually deployed real world significant right matches looks near rate does fitted opposite built accuracies high similar crucial categories define specific comparisons neither desirable greatly reduces larger not initial creation eliminates models usefulness inaccurate predictions processing broader understanding patterns raw githubusercontent com uncertainqubit firstrepo
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -19,7 +19,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <main class="jupyter-page">
     <div id="page-info"><div id="page-title">Lessons</div>
 </div>
-    <div class="jb_cell">
+    
+<div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -52,9 +53,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Code you have previously used to load data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_absolute_error</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
 
 
 <span class="c1"># Path of the file to read</span>
@@ -68,7 +69,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">X</span> <span class="o">=</span> <span class="n">home_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
 
 <span class="c1"># Split into validation and training data</span>
-<span class="n">train_X</span><span class="p">,</span> <span class="n">val_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">val_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">train_X</span><span class="p">,</span> <span class="n">val_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">val_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Specify Model</span>
 <span class="n">iowa_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">)</span>
@@ -86,7 +87,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val_mae</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -97,8 +98,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training Mean Average Error (MAE): $62
-Validation Mean Average Error (MAE): $29,049
+<pre>Training Mean Average Error (MAE): $73
+Validation Mean Average Error (MAE): $33,336
 </pre>
 </div>
 </div>
@@ -113,7 +114,7 @@ Validation Mean Average Error (MAE): $29,049
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Hyperparameter-Analysis">Hyperparameter Analysis<a class="anchor-link" href="#Hyperparameter-Analysis"> </a></h1><p>One way to identify overfitting/underfitting is if your model performs great with training data but poorly with new testing data which is why it is important to have both a large training dataset and a large testing dataset. One of the primary ways ML engineers work to address this problem is through something called hyperparameter analysis. Essential this means trying a bunch of different values for various parameters within a model (such as the number of end nodes). This can either be done as a semi-automated process (like we will below) or as a fully automated process</p>
+<h1 id="Hyperparameter-Analysis">Hyperparameter Analysis<a class="anchor-link" href="#Hyperparameter-Analysis"> </a></h1><p>One way to identify overfitting/underfitting is if your model performs great with training data but poorly with new testing data which is why it is important to have both a large training dataset and a large testing dataset. One of the primary ways ML engineers work to address this problem is through something called hyperparameter analysis. Essentially this means trying a bunch of different values for various parameters within a model (such as the number of end nodes). This can either be done as a semi-automated process (like we will below) or as a fully automated process using services like AWS Sagemaker.</p>
 
 </div>
 </div>
@@ -146,7 +147,7 @@ Validation Mean Average Error (MAE): $29,049
     <span class="k">return</span><span class="p">(</span><span class="n">mae</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -157,8 +158,7 @@ Validation Mean Average Error (MAE): $29,049
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-1:-Compare-Different-Tree-Sizes">Step 1: Compare Different Tree Sizes<a class="anchor-link" href="#Step-1:-Compare-Different-Tree-Sizes"> </a></h2><p>Write a loop that tries the following values for <em>max_leaf_nodes</em> from a set of possible values.</p>
-<p>Call the <em>get_mae</em> function on each value of max_leaf_nodes. Store the output in some way that allows you to select the value of <code>max_leaf_nodes</code> that gives the most accurate model on your data.</p>
+<h2 id="Step-1:-Compare-Different-Tree-Sizes">Step 1: Compare Different Tree Sizes<a class="anchor-link" href="#Step-1:-Compare-Different-Tree-Sizes"> </a></h2><p>This loop tries the following values for <em>max_leaf_nodes</em> from a set of possible values. By trying a large variety of values and comparing the MAE the loop is able to identify what parameter minimizes inaccuracy. Remember that we are measuring MAE against our <em>testing</em> data, this allows us to determine what values minimize underfitting/overfitting and maximize the accuracy of our model when it is actually deployed in a real-world application. We will then print the optimal tree size and store it in the variable <em>best_tree_size</em>.</p>
 
 </div>
 </div>
@@ -172,17 +172,13 @@ Validation Mean Average Error (MAE): $29,049
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">candidate_max_leaf_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>
-<span class="c1"># Write loop to find the ideal tree size from candidate_max_leaf_nodes</span>
-<span class="n">_</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">candidate_max_leaf_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="n">leaf_size</span><span class="p">:</span> <span class="n">get_mae</span><span class="p">(</span><span class="n">leaf_size</span><span class="p">,</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">val_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">val_y</span><span class="p">)</span> <span class="k">for</span> <span class="n">leaf_size</span> <span class="ow">in</span> <span class="n">candidate_max_leaf_nodes</span><span class="p">}</span>
 <span class="n">best_tree_size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">scores</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">best_tree_size</span><span class="p">)</span>
-<span class="c1"># Store the best value of max_leaf_nodes (it will be either 5, 25, 50, 100, 250 or 500)</span>
-<span class="n">best_tree_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Best max_leaf_nodes = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">best_tree_size</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -192,25 +188,9 @@ Validation Mean Average Error (MAE): $29,049
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-6-36ea35ccb72c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-red-fg"># Write loop to find the ideal tree size from candidate_max_leaf_nodes</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> _
-<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span>scores <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">{</span>leaf_size<span class="ansi-blue-fg">:</span> get_mae<span class="ansi-blue-fg">(</span>leaf_size<span class="ansi-blue-fg">,</span> train_X<span class="ansi-blue-fg">,</span> val_X<span class="ansi-blue-fg">,</span> train_y<span class="ansi-blue-fg">,</span> val_y<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> leaf_size <span class="ansi-green-fg">in</span> candidate_max_leaf_nodes<span class="ansi-blue-fg">}</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> best_tree_size <span class="ansi-blue-fg">=</span> min<span class="ansi-blue-fg">(</span>scores<span class="ansi-blue-fg">,</span> key<span class="ansi-blue-fg">=</span>scores<span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> print<span class="ansi-blue-fg">(</span>best_tree_size<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-6-36ea35ccb72c&gt;</span> in <span class="ansi-cyan-fg">&lt;dictcomp&gt;</span><span class="ansi-blue-fg">(.0)</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-red-fg"># Write loop to find the ideal tree size from candidate_max_leaf_nodes</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> _
-<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span>scores <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">{</span>leaf_size<span class="ansi-blue-fg">:</span> get_mae<span class="ansi-blue-fg">(</span>leaf_size<span class="ansi-blue-fg">,</span> train_X<span class="ansi-blue-fg">,</span> val_X<span class="ansi-blue-fg">,</span> train_y<span class="ansi-blue-fg">,</span> val_y<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> leaf_size <span class="ansi-green-fg">in</span> candidate_max_leaf_nodes<span class="ansi-blue-fg">}</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span> best_tree_size <span class="ansi-blue-fg">=</span> min<span class="ansi-blue-fg">(</span>scores<span class="ansi-blue-fg">,</span> key<span class="ansi-blue-fg">=</span>scores<span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      6</span> print<span class="ansi-blue-fg">(</span>best_tree_size<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">NameError</span>: name &#39;get_mae&#39; is not defined</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Best max_leaf_nodes = 71
+</pre>
 </div>
 </div>
 </div>
@@ -238,14 +218,14 @@ Validation Mean Average Error (MAE): $29,049
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fill in argument to make optimal size and uncomment</span>
-<span class="n">final_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">best_tree_size</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># fit the final model and uncomment the next two lines</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">final_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">best_tree_size</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">final_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">cmbd_predictions</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">cmbd_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">cmbd_predictions</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Combined Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmbd_mae</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -255,16 +235,10 @@ Validation Mean Average Error (MAE): $29,049
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>DecisionTreeRegressor(criterion=&#39;mse&#39;, max_depth=None, max_features=None,
-           max_leaf_nodes=100, min_impurity_decrease=0.0,
-           min_impurity_split=None, min_samples_leaf=1,
-           min_samples_split=2, min_weight_fraction_leaf=0.0,
-           presort=False, random_state=0, splitter=&#39;best&#39;)</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Combined Mean Average Error (MAE): $18,692
+</pre>
 </div>
-
 </div>
 </div>
 </div>
@@ -277,8 +251,8 @@ Validation Mean Average Error (MAE): $29,049
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You've tuned this model and improved your results. But we are still using Decision Tree models, which are not very sophisticated by modern machine learning standards. In the next step you will learn to use Random Forests to improve your models even more.</p>
-<h1 id="Great-Job!">Great Job!<a class="anchor-link" href="#Great-Job!"> </a></h1>
+<h2 id="Recap">Recap<a class="anchor-link" href="#Recap"> </a></h2><p>While error certainly exists with just a few simple steps we have managed to reduce the error by almost \$11,150 which is a significant margin. In addition, that was all accomplished by changing only one parameter of many. Hyperparameter analysis is an essential tool in any ML engineer's toolkit because it allows for the identification and minimization of underfitting and overfitting which can result in significant penalalties to accuracy when actually deployed in the real world.</p>
+<h3 id="Great-Job!">Great Job!<a class="anchor-link" href="#Great-Job!"> </a></h3>
 </div>
 </div>
 </div>
