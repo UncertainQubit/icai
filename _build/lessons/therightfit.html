@@ -19,7 +19,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <main class="jupyter-page">
     <div id="page-info"><div id="page-title">Lessons</div>
 </div>
-    <div class="jb_cell">
+    
+<div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -53,9 +54,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Code you have previously used to load data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_absolute_error</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
 
 
 <span class="c1"># Path of the file to read</span>
@@ -87,7 +88,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val_mae</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -99,7 +100,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training Mean Average Error (MAE): $73
-Validation Mean Average Error (MAE): $32,518
+Validation Mean Average Error (MAE): $32,541
 </pre>
 </div>
 </div>
@@ -147,7 +148,7 @@ Validation Mean Average Error (MAE): $32,518
     <span class="k">return</span><span class="p">(</span><span class="n">mae</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -172,106 +173,13 @@ Validation Mean Average Error (MAE): $32,518
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
-<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
-<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">FloatSlider</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">slow_function</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">if</span>
-                <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span>
-                <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">==</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">return</span>
-<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">FloatSlider</span>
-<span class="n">interact</span><span class="p">(</span><span class="n">slow_function</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">1e5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1e7</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1e5</span><span class="p">));</span>
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">slider</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">slider</span>
-<span class="n">interact</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">slider</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-
- 
- 
-<div id="7976a0b6-10dd-4c51-9c13-83b0dd4659dc"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#7976a0b6-10dd-4c51-9c13-83b0dd4659dc');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e7545a13f1264a0a9d106987aedba47b", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-
- 
- 
-<div id="d68a6b86-63eb-4bd7-84e6-7679ac84202c"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#d68a6b86-63eb-4bd7-84e6-7679ac84202c');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "68da414e2ed94206908850584c3ccc75", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">candidate_max_leaf_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="n">leaf_size</span><span class="p">:</span> <span class="n">get_mae</span><span class="p">(</span><span class="n">leaf_size</span><span class="p">,</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">val_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">val_y</span><span class="p">)</span> <span class="k">for</span> <span class="n">leaf_size</span> <span class="ow">in</span> <span class="n">candidate_max_leaf_nodes</span><span class="p">}</span>
 <span class="n">best_tree_size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">scores</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Best max_leaf_nodes = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">best_tree_size</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -311,19 +219,17 @@ var element = $('#d68a6b86-63eb-4bd7-84e6-7679ac84202c');
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">funfunction</span><span class="p">(</span><span class="n">slid</span><span class="p">):</span>
-    <span class="n">slid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">slid</span><span class="p">)</span>
-    <span class="n">final_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">slid</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">final_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">cmbd_predictions</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">cmbd_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">cmbd_predictions</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Combined Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmbd_mae</span><span class="p">))</span>
-    <span class="k">return</span>
-<span class="n">interact</span><span class="p">(</span><span class="n">funfunction</span><span class="p">,</span><span class="n">slid</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">));</span>
-<span class="c1">#final_model = DecisionTreeRegressor(max_leaf_nodes = best_tree_size, random_state = 0)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="n">widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">readout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">continuous_update</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
+<span class="n">final_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">final_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">cmbd_predictions</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">cmbd_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">cmbd_predictions</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Combined Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmbd_mae</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -338,16 +244,48 @@ var element = $('#d68a6b86-63eb-4bd7-84e6-7679ac84202c');
 
  
  
-<div id="17c77f01-a4b2-4009-af70-31c7c427cda8"></div>
+<div id="e726a60b-8a6a-4a92-9bb4-58a9fb8efa69"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#17c77f01-a4b2-4009-af70-31c7c427cda8');
+var element = $('#e726a60b-8a6a-4a92-9bb4-58a9fb8efa69');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "42e775b868674022a0c34b219719c5a5", "version_major": 2, "version_minor": 0}
+{"model_id": "caa4d555c9e1446cb10a33ceb42441e8", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-13-ce96ff27d577&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      3</span> display<span class="ansi-yellow-intense-fg ansi-bold">(</span>widget<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      4</span> final_model <span class="ansi-yellow-intense-fg ansi-bold">=</span> DecisionTreeRegressor<span class="ansi-yellow-intense-fg ansi-bold">(</span>max_leaf_nodes <span class="ansi-yellow-intense-fg ansi-bold">=</span> widget<span class="ansi-yellow-intense-fg ansi-bold">.</span>value<span class="ansi-yellow-intense-fg ansi-bold">,</span> random_state <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 5</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>final_model<span class="ansi-yellow-intense-fg ansi-bold">.</span>fit<span class="ansi-yellow-intense-fg ansi-bold">(</span>X<span class="ansi-yellow-intense-fg ansi-bold">,</span>y<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      6</span> cmbd_predictions <span class="ansi-yellow-intense-fg ansi-bold">=</span> final_model<span class="ansi-yellow-intense-fg ansi-bold">.</span>predict<span class="ansi-yellow-intense-fg ansi-bold">(</span>X<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      7</span> cmbd_mae <span class="ansi-yellow-intense-fg ansi-bold">=</span> mean_absolute_error<span class="ansi-yellow-intense-fg ansi-bold">(</span>cmbd_predictions<span class="ansi-yellow-intense-fg ansi-bold">,</span> y<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda\lib\site-packages\sklearn\tree\tree.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-intense-fg ansi-bold">(self, X, y, sample_weight, check_input, X_idx_sorted)</span>
+<span class="ansi-green-fg">   1122</span>             sample_weight<span class="ansi-yellow-intense-fg ansi-bold">=</span>sample_weight<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-fg">   1123</span>             check_input<span class="ansi-yellow-intense-fg ansi-bold">=</span>check_input<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1124</span><span class="ansi-yellow-intense-fg ansi-bold">             X_idx_sorted=X_idx_sorted)
+</span><span class="ansi-green-fg">   1125</span>         <span class="ansi-green-intense-fg ansi-bold">return</span> self
+<span class="ansi-green-fg">   1126</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda\lib\site-packages\sklearn\tree\tree.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-intense-fg ansi-bold">(self, X, y, sample_weight, check_input, X_idx_sorted)</span>
+<span class="ansi-green-fg">    246</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-yellow-intense-fg ansi-bold">-</span><span class="ansi-cyan-intense-fg ansi-bold">1</span> <span class="ansi-yellow-intense-fg ansi-bold">&lt;</span> max_leaf_nodes <span class="ansi-yellow-intense-fg ansi-bold">&lt;</span> <span class="ansi-cyan-intense-fg ansi-bold">2</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    247</span>             raise ValueError((&#34;max_leaf_nodes {0} must be either None &#34;
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 248</span><span class="ansi-yellow-intense-fg ansi-bold">                               &#34;or larger than 1&#34;).format(max_leaf_nodes))
+</span><span class="ansi-green-fg">    249</span> 
+<span class="ansi-green-fg">    250</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> sample_weight <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-red-intense-fg ansi-bold">ValueError</span>: max_leaf_nodes 1 must be either None or larger than 1</pre>
+</div>
 </div>
 </div>
 </div>
