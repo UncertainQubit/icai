@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: model data overfitting underfitting tree accuracy because below values training using large created poorly validation trained very trends seen set used end nodes performs only ml extremely error identify hyperparameter analysis testing different mae our size fit where almost perfectly being however new built missing just specific neither either inaccurate broader example decision determine correct margin ways great dataset engineers trying automated process function step loop parameter allows actually deployed real world significant right matches looks near rate does fitted opposite accuracies high similar crucial categories define comparisons desirable greatly reduces larger not initial creation eliminates models usefulness predictions processing
+search: model data overfitting accuracy because underfitting tree below error values training using large created poorly validation trained very trends seen set used end nodes performs only ml extremely identify hyperparameter analysis testing different mae our size fit where almost perfectly being however new built missing just specific neither either inaccurate broader example decision determine correct margin ways great dataset engineers trying automated process function average step maxleafnodes optimal value minimizing inaccuracy allows actually deployed real world loop parameter significant right matches looks near rate does fitted opposite accuracies high similar crucial categories define comparisons desirable greatly reduces larger not initial
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -19,14 +19,13 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <main class="jupyter-page">
     <div id="page-info"><div id="page-title">Lessons</div>
 </div>
-    
-<div class="jb_cell">
+    <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="The-Right-Fit">The Right Fit<a class="anchor-link" href="#The-Right-Fit"> </a></h1><p>Overfitting is where a model matches the training data almost perfectly, so when the model is being created, it looks like a near 100% accuracy rate; however, it does poorly in validation and other new data because it is perfectly fitted to the data that it was trained on. Underfitting is the opposite, where a when the model is being built, the accuracies are very high, similar to overfitting, but the model is missing crucial categories that define trends seen in the data and just has a very specific set of comparisons.</p>
 <p>Neither are desirable in a model as it greatly reduces the accuracy of the model when it is used on either training data or a larger set of data that was not used for the initial creation of the model. This eliminates the model's usefulness as it will make inaccurate predictions about what it is processing because it is missing a broader understanding of trends/patterns in the data.</p>
-<p>For example, a model built using a basic decision tree to determine house prices like the one pictured created below could be overfit if it had so many end nodes that they were each incredibly specific (i.e. 1111 Sherwood Street will sell for \$111,000). When this model is used on data it has never seen before it performs poorly because it was so specified to the data it was trained on. This leads to accuracy suffering as a whole. Conversely, a decision tree with only two end nodes (say \$100,000 and \$200,000) would be inaccurate because it can't recognize broader trends in the data and is focused on only one or two features. Neither makes for a very good ML model. In this chapter you will learn about identifying overfitting/underfitting and how to correct it.</p>
+<p>For example, a model built using a basic decision tree to determine house prices like the one pictured created below could be overfit if it had so many end nodes that they were each incredibly specific (i.e. 1111 Sherwood Street will sell for \$111,000). When this model is used on data it has never seen before it performs poorly because it was so specified to the data it was trained on. This leads to accuracy suffering as a whole. Conversely, a decision tree with only two end nodes (say \\$100,000 and \$200,000) would be inaccurate because it can't recognize broader trends in the data and is focused on only one or two features. Neither makes for a very good ML model. In this chapter you will learn about identifying overfitting/underfitting and how to correct it.</p>
 <p><img src="https://raw.githubusercontent.com/UncertainQubit/firstrepo/master/R3ywQsR.png" alt=""></p>
 
 </div>
@@ -54,9 +53,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Code you have previously used to load data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_absolute_error</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 
 
 <span class="c1"># Path of the file to read</span>
@@ -79,16 +78,16 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <span class="c1"># Make training predictions and calculate mean absolute error</span>
 <span class="n">train_predictions</span> <span class="o">=</span> <span class="n">iowa_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_X</span><span class="p">)</span>
-<span class="n">train_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">train_predictions</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+<span class="n">train_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">train_y</span><span class="p">,</span> <span class="n">train_predictions</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_mae</span><span class="p">))</span>
 
 <span class="c1"># Make validation predipoctions and calculate mean absolute error</span>
 <span class="n">val_predictions</span> <span class="o">=</span> <span class="n">iowa_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">val_X</span><span class="p">)</span>
-<span class="n">val_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">val_predictions</span><span class="p">,</span> <span class="n">val_y</span><span class="p">)</span>
+<span class="n">val_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">val_y</span><span class="p">,</span> <span class="n">val_predictions</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val_mae</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -100,7 +99,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training Mean Average Error (MAE): $73
-Validation Mean Average Error (MAE): $32,541
+Validation Mean Average Error (MAE): $32,978
 </pre>
 </div>
 </div>
@@ -126,7 +125,7 @@ Validation Mean Average Error (MAE): $32,541
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Exercise">Exercise<a class="anchor-link" href="#Exercise"> </a></h1><p>We have created the function <code>get_mae</code> for you which will generate the MAE for different versions of our model. Code for this function can be viewed in the cell below.</p>
+<h1 id="Exercise">Exercise<a class="anchor-link" href="#Exercise"> </a></h1><p>We have created the function <code>get_mae</code> for you which will generate the MAE (mean average error) for different versions of our model. Code for this function can be viewed in the cell below.</p>
 
 </div>
 </div>
@@ -148,6 +147,67 @@ Validation Mean Average Error (MAE): $32,541
     <span class="k">return</span><span class="p">(</span><span class="n">mae</span><span class="p">)</span>
 </pre></div>
 
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step-1:-Compare-Different-Tree-Sizes">Step 1: Compare Different Tree Sizes<a class="anchor-link" href="#Step-1:-Compare-Different-Tree-Sizes"> </a></h2><p>Use the widget below to adjust the number of leaves in the final model or the <code>max_leaf_nodes</code>. Try to find the optimal value for minimizing inaccuracy. This will be the lowest value because the number displayed represents the average error and by minimizing error we improve accuracy. Remember that we are measuring MAE against our <em>testing</em> data, this allows us to determine what values minimize underfitting/overfitting and maximize the accuracy of our model when it is actually deployed in a real-world application.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">IntSlider</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">get_mae</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">val_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">val_y</span><span class="p">))</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number of Leaves:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">readout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">continuous_update</span><span class="o">=</span><span class="kc">True</span><span class="p">));</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="db738167-5711-4bea-9e22-fde559b43e4d"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#db738167-5711-4bea-9e22-fde559b43e4d');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "fbafe818c3f74846ae15297859bb5017", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
 </div>
 </div>
 </div>
@@ -159,7 +219,7 @@ Validation Mean Average Error (MAE): $32,541
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step-1:-Compare-Different-Tree-Sizes">Step 1: Compare Different Tree Sizes<a class="anchor-link" href="#Step-1:-Compare-Different-Tree-Sizes"> </a></h2><p>This loop tries the following values for <em>max_leaf_nodes</em> from a set of possible values. By trying a large variety of values and comparing the MAE the loop is able to identify what parameter minimizes inaccuracy. Remember that we are measuring MAE against our <em>testing</em> data, this allows us to determine what values minimize underfitting/overfitting and maximize the accuracy of our model when it is actually deployed in a real-world application. We will then print the optimal tree size and store it in the variable <em>best_tree_size</em>.</p>
+<p>This loop tries the following values for <code>max_leaf_nodes</code> from a set of possible values. By trying a large variety of values and comparing the MAE the loop is able to identify what parameter minimizes inaccuracy. We will then print the optimal tree size and store it in the variable <em>best_tree_size</em>.</p>
 
 </div>
 </div>
@@ -179,7 +239,7 @@ Validation Mean Average Error (MAE): $32,541
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Best max_leaf_nodes = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">best_tree_size</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -219,17 +279,14 @@ Validation Mean Average Error (MAE): $32,541
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
-<span class="n">widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">readout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">continuous_update</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
-<span class="n">final_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">final_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">best_tree_size</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">final_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 <span class="n">cmbd_predictions</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">cmbd_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">cmbd_predictions</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">cmbd_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">cmbd_predictions</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Combined Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmbd_mae</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -239,52 +296,9 @@ Validation Mean Average Error (MAE): $32,541
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
-
-
-
- 
- 
-<div id="e726a60b-8a6a-4a92-9bb4-58a9fb8efa69"></div>
-<div class="output_subarea output_widget_view ">
-<script type="text/javascript">
-var element = $('#e726a60b-8a6a-4a92-9bb4-58a9fb8efa69');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "caa4d555c9e1446cb10a33ceb42441e8", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-13-ce96ff27d577&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-<span class="ansi-green-fg">      3</span> display<span class="ansi-yellow-intense-fg ansi-bold">(</span>widget<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      4</span> final_model <span class="ansi-yellow-intense-fg ansi-bold">=</span> DecisionTreeRegressor<span class="ansi-yellow-intense-fg ansi-bold">(</span>max_leaf_nodes <span class="ansi-yellow-intense-fg ansi-bold">=</span> widget<span class="ansi-yellow-intense-fg ansi-bold">.</span>value<span class="ansi-yellow-intense-fg ansi-bold">,</span> random_state <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 5</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>final_model<span class="ansi-yellow-intense-fg ansi-bold">.</span>fit<span class="ansi-yellow-intense-fg ansi-bold">(</span>X<span class="ansi-yellow-intense-fg ansi-bold">,</span>y<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      6</span> cmbd_predictions <span class="ansi-yellow-intense-fg ansi-bold">=</span> final_model<span class="ansi-yellow-intense-fg ansi-bold">.</span>predict<span class="ansi-yellow-intense-fg ansi-bold">(</span>X<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">      7</span> cmbd_mae <span class="ansi-yellow-intense-fg ansi-bold">=</span> mean_absolute_error<span class="ansi-yellow-intense-fg ansi-bold">(</span>cmbd_predictions<span class="ansi-yellow-intense-fg ansi-bold">,</span> y<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda\lib\site-packages\sklearn\tree\tree.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-intense-fg ansi-bold">(self, X, y, sample_weight, check_input, X_idx_sorted)</span>
-<span class="ansi-green-fg">   1122</span>             sample_weight<span class="ansi-yellow-intense-fg ansi-bold">=</span>sample_weight<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-fg">   1123</span>             check_input<span class="ansi-yellow-intense-fg ansi-bold">=</span>check_input<span class="ansi-yellow-intense-fg ansi-bold">,</span>
-<span class="ansi-green-intense-fg ansi-bold">-&gt; 1124</span><span class="ansi-yellow-intense-fg ansi-bold">             X_idx_sorted=X_idx_sorted)
-</span><span class="ansi-green-fg">   1125</span>         <span class="ansi-green-intense-fg ansi-bold">return</span> self
-<span class="ansi-green-fg">   1126</span> 
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda\lib\site-packages\sklearn\tree\tree.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-intense-fg ansi-bold">(self, X, y, sample_weight, check_input, X_idx_sorted)</span>
-<span class="ansi-green-fg">    246</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-yellow-intense-fg ansi-bold">-</span><span class="ansi-cyan-intense-fg ansi-bold">1</span> <span class="ansi-yellow-intense-fg ansi-bold">&lt;</span> max_leaf_nodes <span class="ansi-yellow-intense-fg ansi-bold">&lt;</span> <span class="ansi-cyan-intense-fg ansi-bold">2</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    247</span>             raise ValueError((&#34;max_leaf_nodes {0} must be either None &#34;
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 248</span><span class="ansi-yellow-intense-fg ansi-bold">                               &#34;or larger than 1&#34;).format(max_leaf_nodes))
-</span><span class="ansi-green-fg">    249</span> 
-<span class="ansi-green-fg">    250</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> sample_weight <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-
-<span class="ansi-red-intense-fg ansi-bold">ValueError</span>: max_leaf_nodes 1 must be either None or larger than 1</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Combined Mean Average Error (MAE): $17,776
+</pre>
 </div>
 </div>
 </div>
