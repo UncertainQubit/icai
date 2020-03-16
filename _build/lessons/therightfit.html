@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: 
 suffix: .ipynb
-search: model data overfitting accuracy because underfitting tree below error values training using large created poorly validation trained very trends seen set used end nodes performs only ml extremely identify hyperparameter analysis testing different mae our size fit where almost perfectly being however new built missing just specific neither either inaccurate broader example decision determine correct margin ways great dataset engineers trying automated process function average step maxleafnodes optimal value minimizing inaccuracy allows actually deployed real world loop parameter significant right matches looks near rate does fitted opposite accuracies high similar crucial categories define comparisons desirable greatly reduces larger not initial
+search: model data below ml because overfitting error underfitting models accuracy tree fit values engineers identify training using large raw githubusercontent com uncertainqubit firstrepo master png trying perfect being lowest average important very created poorly validation trained trends used end nodes performs only extremely hyperparameter analysis testing different mae our size right optimize learn overfit means called just job well able within where almost perfectly however new built tested missing neither set inaccurate broader example decision determine seen correct margin ways great dataset automated process function step maxleafnodes optimal value minimizing inaccuracy allows actually deployed real world loop parameter significant goldilocksai
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -23,9 +23,23 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-Right-Fit">The Right Fit<a class="anchor-link" href="#The-Right-Fit"> </a></h1><p>Overfitting is where a model matches the training data almost perfectly, so when the model is being created, it looks like a near 100% accuracy rate; however, it does poorly in validation and other new data because it is perfectly fitted to the data that it was trained on. Underfitting is the opposite, where a when the model is being built, the accuracies are very high, similar to overfitting, but the model is missing crucial categories that define trends seen in the data and just has a very specific set of comparisons.</p>
-<p>Neither are desirable in a model as it greatly reduces the accuracy of the model when it is used on either training data or a larger set of data that was not used for the initial creation of the model. This eliminates the model's usefulness as it will make inaccurate predictions about what it is processing because it is missing a broader understanding of trends/patterns in the data.</p>
-<p>For example, a model built using a basic decision tree to determine house prices like the one pictured created below could be overfit if it had so many end nodes that they were each incredibly specific (i.e. 1111 Sherwood Street will sell for \$111,000). When this model is used on data it has never seen before it performs poorly because it was so specified to the data it was trained on. This leads to accuracy suffering as a whole. Conversely, a decision tree with only two end nodes (say \\$100,000 and \$200,000) would be inaccurate because it can't recognize broader trends in the data and is focused on only one or two features. Neither makes for a very good ML model. In this chapter you will learn about identifying overfitting/underfitting and how to correct it.</p>
+<p><img src="https://raw.githubusercontent.com/UncertainQubit/firstrepo/master/GoldilocksAI.png" alt=""></p>
+<h1 id="The-Right-Fit">The Right Fit<a class="anchor-link" href="#The-Right-Fit"> </a></h1><p>Much of machine learning is trying to <em>optimize</em> models, or find the perfect fit. You will learn more about what a model being <em>overfit</em> or <em>underfit</em> means below but ML engineers must constantly tune their models to find the perfect balance between the two, the so-called "Goldilocks zone". Observe the graph below:
+<img src="https://raw.githubusercontent.com/UncertainQubit/firstrepo/master/OverfitAI.png" alt=""></p>
+<p>When designing models ML engineers look for the right fit, the lowest point on the red curve which indicates the lowest average error in their model. Optimizing ML models is important because just like clothes or uncomfortable beds a model that isn't properly optimized doesn't do its job very well. Therefore, one of the important skills to have as a ML engineer is to be able to identify inaccuricies within ML models and to optimize them to increase performance and find the perfect fit.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Overfitting-v.-Underfitting">Overfitting v. Underfitting<a class="anchor-link" href="#Overfitting-v.-Underfitting"> </a></h1><p>Overfitting is where a model matches the training data almost perfectly, so when the model is being created, it looks like a near 100% accuracy rate; however, it does poorly in validation and other new data because it is perfectly fitted to the data that it was trained on. Underfitting is the opposite, where a when the model is being built and tested, the accuracies are very low because the model is missing crucial categories that define trends in the data.</p>
+<p>Neither are desirable in a model as it greatly reduces the accuracy of the model when it is used on training data or a larger set of data that was not used for the initial creation of the model. This eliminates the model's usefulness as it will make inaccurate predictions about what it is processing because it is missing a broader understanding of trends/patterns in the data.</p>
+<p>For example, a model built using a basic decision tree to determine house prices like the one pictured created below could be overfit if it had so many end nodes that they were each incredibly specific (i.e. 1111 Sherwood Street will sell for \$111,000). When this model is used on data it has never seen before it performs poorly because it was so specified to the data it was trained on. This leads to accuracy suffering as a whole. Conversely, a decision tree with only two end nodes (say \\$100,000 and \$200,000 based on East or West Coast) would be inaccurate because it can't recognize broader trends in the data and is focused on only one or two features. Neither makes for a very good ML model. In this lesson you will learn about identifying overfitting/underfitting and how to correct it.</p>
 <p><img src="https://raw.githubusercontent.com/UncertainQubit/firstrepo/master/R3ywQsR.png" alt=""></p>
 
 </div>
@@ -81,7 +95,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <span class="n">train_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">train_y</span><span class="p">,</span> <span class="n">train_predictions</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_mae</span><span class="p">))</span>
 
-<span class="c1"># Make validation predipoctions and calculate mean absolute error</span>
+<span class="c1"># Make validation predictions and calculate mean absolute error</span>
 <span class="n">val_predictions</span> <span class="o">=</span> <span class="n">iowa_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">val_X</span><span class="p">)</span>
 <span class="n">val_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">val_y</span><span class="p">,</span> <span class="n">val_predictions</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation Mean Average Error (MAE): $</span><span class="si">{:,.0f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val_mae</span><span class="p">))</span>
@@ -197,10 +211,10 @@ Validation Mean Average Error (MAE): $32,978
 
  
  
-<div id="db738167-5711-4bea-9e22-fde559b43e4d"></div>
+<div id="4540e5a2-72b8-4489-9247-fe86eb9876c7"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#db738167-5711-4bea-9e22-fde559b43e4d');
+var element = $('#4540e5a2-72b8-4489-9247-fe86eb9876c7');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "fbafe818c3f74846ae15297859bb5017", "version_major": 2, "version_minor": 0}
